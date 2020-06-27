@@ -1,0 +1,12 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/ParallelProject.dir/main.c.o"
+  "CMakeFiles/ParallelProject.dir/string_group_by.c.o"
+  "CMakeFiles/ParallelProject.dir/test.c.o"
+  "ParallelProject"
+  "ParallelProject.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/ParallelProject.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

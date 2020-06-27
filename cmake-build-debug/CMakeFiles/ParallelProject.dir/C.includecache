@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.h
+string.h
+-
+
+/home/hezhiwei/CLionProjects/ParallelProject/test.c
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+string.h
+/home/hezhiwei/CLionProjects/ParallelProject/string.h
+string_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.h
+stdio.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdio.h
+
