@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ParallelProject.dir/main.c.o"
-  "CMakeFiles/ParallelProject.dir/string_group_by.c.o"
+  "CMakeFiles/ParallelProject.dir/omp_group_by.c.o"
+  "CMakeFiles/ParallelProject.dir/serial_funcion.c.o"
   "CMakeFiles/ParallelProject.dir/test.c.o"
   "ParallelProject"
   "ParallelProject.pdb"

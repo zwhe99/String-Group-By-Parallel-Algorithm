@@ -5,7 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/hezhiwei/CLionProjects/ParallelProject/main.c" "/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles/ParallelProject.dir/main.c.o"
-  "/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.c" "/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles/ParallelProject.dir/string_group_by.c.o"
+  "/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c" "/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles/ParallelProject.dir/omp_group_by.c.o"
+  "/home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c" "/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles/ParallelProject.dir/serial_funcion.c.o"
   "/home/hezhiwei/CLionProjects/ParallelProject/test.c" "/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles/ParallelProject.dir/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

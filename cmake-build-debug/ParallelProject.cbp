@@ -81,10 +81,16 @@
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/main.c">
 			<Option target="ParallelProject"/>
 		</Unit>
-		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.c">
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c">
 			<Option target="ParallelProject"/>
 		</Unit>
-		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.h">
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h">
 			<Option target="ParallelProject"/>
 		</Unit>
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/test.c">

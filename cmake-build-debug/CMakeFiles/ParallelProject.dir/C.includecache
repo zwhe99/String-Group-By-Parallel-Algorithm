@@ -6,17 +6,47 @@
 
 #IncludeRegexTransform: 
 
-/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/main.c
+test.h
+/home/hezhiwei/CLionProjects/ParallelProject/test.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c
+omp_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
 string.h
 -
+serial_funciton.h
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+stdio.h
+-
+omp.h
+-
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+stdint.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdint.h
 
-/home/hezhiwei/CLionProjects/ParallelProject/test.c
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+string.h
+-
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+stdint.h
+-
+stdio.h
+-
+
+/home/hezhiwei/CLionProjects/ParallelProject/test.h
 stdlib.h
 /home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
 string.h
 /home/hezhiwei/CLionProjects/ParallelProject/string.h
-string_group_by.h
-/home/hezhiwei/CLionProjects/ParallelProject/string_group_by.h
+omp_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
 stdio.h
 /home/hezhiwei/CLionProjects/ParallelProject/stdio.h
+serial_funciton.h
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
 

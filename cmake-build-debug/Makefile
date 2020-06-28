@@ -150,32 +150,59 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/main.c.s
 .PHONY : main.c.s
 
-string_group_by.o: string_group_by.c.o
+omp_group_by.o: omp_group_by.c.o
 
-.PHONY : string_group_by.o
+.PHONY : omp_group_by.o
 
 # target to build an object file
-string_group_by.c.o:
-	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/string_group_by.c.o
-.PHONY : string_group_by.c.o
+omp_group_by.c.o:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/omp_group_by.c.o
+.PHONY : omp_group_by.c.o
 
-string_group_by.i: string_group_by.c.i
+omp_group_by.i: omp_group_by.c.i
 
-.PHONY : string_group_by.i
+.PHONY : omp_group_by.i
 
 # target to preprocess a source file
-string_group_by.c.i:
-	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/string_group_by.c.i
-.PHONY : string_group_by.c.i
+omp_group_by.c.i:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/omp_group_by.c.i
+.PHONY : omp_group_by.c.i
 
-string_group_by.s: string_group_by.c.s
+omp_group_by.s: omp_group_by.c.s
 
-.PHONY : string_group_by.s
+.PHONY : omp_group_by.s
 
 # target to generate assembly for a file
-string_group_by.c.s:
-	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/string_group_by.c.s
-.PHONY : string_group_by.c.s
+omp_group_by.c.s:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/omp_group_by.c.s
+.PHONY : omp_group_by.c.s
+
+serial_funcion.o: serial_funcion.c.o
+
+.PHONY : serial_funcion.o
+
+# target to build an object file
+serial_funcion.c.o:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/serial_funcion.c.o
+.PHONY : serial_funcion.c.o
+
+serial_funcion.i: serial_funcion.c.i
+
+.PHONY : serial_funcion.i
+
+# target to preprocess a source file
+serial_funcion.c.i:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/serial_funcion.c.i
+.PHONY : serial_funcion.c.i
+
+serial_funcion.s: serial_funcion.c.s
+
+.PHONY : serial_funcion.s
+
+# target to generate assembly for a file
+serial_funcion.c.s:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/serial_funcion.c.s
+.PHONY : serial_funcion.c.s
 
 test.o: test.c.o
 
@@ -216,9 +243,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... string_group_by.o"
-	@echo "... string_group_by.i"
-	@echo "... string_group_by.s"
+	@echo "... omp_group_by.o"
+	@echo "... omp_group_by.i"
+	@echo "... omp_group_by.s"
+	@echo "... serial_funcion.o"
+	@echo "... serial_funcion.i"
+	@echo "... serial_funcion.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

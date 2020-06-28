@@ -1,10 +1,7 @@
 //
 // Created by hezhiwei on 6/26/20.
 //
-#include "stdlib.h"
-#include "string.h"
-#include "string_group_by.h"
-#include "stdio.h"
+#include "test.h"
 
 void test_count_string_sort() {
     char** str_arr = (char**)malloc(10 * sizeof(char*));
@@ -199,4 +196,30 @@ void test_assign_group(){
     }
 
 
+}
+
+void test_radix_sort_main(){
+    char** str_arr = (char**)malloc(10 * sizeof(char*));
+
+    for (int i = 0; i < 10; ++i) {
+        str_arr[i] = (char*)malloc(256*sizeof(char));
+    }
+    strcpy(str_arr[0], "bad");
+    strcpy(str_arr[1], "abc");
+    strcpy(str_arr[2], "bdb");
+    strcpy(str_arr[3], "bda");
+    strcpy(str_arr[4], "bad");
+    strcpy(str_arr[5], "abc");
+    strcpy(str_arr[6], "dab");
+    strcpy(str_arr[7], "ddhh");
+    strcpy(str_arr[8], "da");
+    strcpy(str_arr[9], "dbcd");
+
+
+    radix_sort_main(str_arr, 10, 0);
+
+    for (int i = 0; i < 10; ++i) {
+        printf("%s", str_arr[i]);
+        printf("\n");
+    }
 }

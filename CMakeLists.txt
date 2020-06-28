@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c99 -fopenmp")
 
 
-add_executable(ParallelProject main.c string_group_by.h string_group_by.c test.h test.c)
+add_executable(ParallelProject main.c omp_group_by.h omp_group_by.c test.h test.c serial_funciton.h serial_funcion.c)
 
 message(STATUS "Checking OpenMP")
 find_package(OpenMP)
