@@ -20,5 +20,5 @@ void test_omp_prefix_sum();
 void test_omp_quick_sort_partial();
 void test_assign_group();
 void test_radix_sort_main();
-
+void test_parallel_read_file(const char* file_path, int num_rows);
 #endif //PARALLELPROJECT_TEST_H

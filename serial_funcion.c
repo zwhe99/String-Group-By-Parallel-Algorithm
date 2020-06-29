@@ -64,7 +64,6 @@ void first_char_count_string_sort(char*** str_arr_p , size_t num, size_t** begin
 }
 
 //todo:not by myself
-//todo:test performance
 void quick_sort(char **arr, size_t num, int level) {
     const int MAX_LEVELS = 64;
     size_t beg[MAX_LEVELS], end[MAX_LEVELS], L, R;
@@ -112,6 +111,15 @@ void quick_sort_partial(char** arr, size_t* starts, size_t *ends, int level){
     for(i=0; i < SIZE_OF_CNT8; ++i){
         if(ends[i] != 0){
             quick_sort(arr+starts[i], ends[i] - starts[i], level);
+        }
+    }
+}
+
+void radix_sort_partial(char** arr, size_t* starts, size_t *ends, int level){
+    size_t i;
+    for(i=0; i < SIZE_OF_CNT8; ++i){
+        if(ends[i] != 0){
+            radix_sort_main(arr+starts[i], ends[i] - starts[i], level);
         }
     }
 }

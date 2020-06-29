@@ -150,6 +150,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/main.c.s
 .PHONY : main.c.s
 
+measure.o: measure.c.o
+
+.PHONY : measure.o
+
+# target to build an object file
+measure.c.o:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/measure.c.o
+.PHONY : measure.c.o
+
+measure.i: measure.c.i
+
+.PHONY : measure.i
+
+# target to preprocess a source file
+measure.c.i:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/measure.c.i
+.PHONY : measure.c.i
+
+measure.s: measure.c.s
+
+.PHONY : measure.s
+
+# target to generate assembly for a file
+measure.c.s:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/measure.c.s
+.PHONY : measure.c.s
+
 omp_group_by.o: omp_group_by.c.o
 
 .PHONY : omp_group_by.o
@@ -243,6 +270,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... measure.o"
+	@echo "... measure.i"
+	@echo "... measure.s"
 	@echo "... omp_group_by.o"
 	@echo "... omp_group_by.i"
 	@echo "... omp_group_by.s"

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #define SIZE_OF_CNT8 1<<8
 #define SIZE_OF_CNT16 1<<16
-#define MAX_NUM_GROUPS 1<<10
+#define MAX_NUM_GROUPS 100000
 #define RADIX_MIN_NUM 30
 
 /**
@@ -59,6 +59,16 @@ void quick_sort(char** arr, size_t num, int level);
  * @param level :[IN] all the strings has a common prefix of "level" length
  */
 void quick_sort_partial(char** arr, size_t* starts, size_t *ends, int level);
+
+/**
+ * @name radix_sort_partial
+ * @brief sort specified parts of the array of strings by radix-sort
+ * @param arr :[IN|OUT]array of strings to be sort
+ * @param starts :[IN]array of begin pos of each part
+ * @param ends :[IN]array of end pos of each part
+ * @param level :[IN] all the strings has a common prefix of "level" length
+ */
+void radix_sort_partial(char** arr, size_t* starts, size_t *ends, int level);
 
 /**
  * @name radix_sort_main
@@ -114,7 +124,6 @@ void radix_sort8(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* l
  * @param level :[IN]all the strings has a common prefix of "level" length
  */
 void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* leb16, size_t beg, size_t end, int level);
-
 
 
 #endif //PARALLELPROJECT_SERIAL_FUNCITON_H

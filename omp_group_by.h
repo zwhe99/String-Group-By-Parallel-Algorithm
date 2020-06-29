@@ -12,10 +12,9 @@
 #include "stdint.h"
 
 //todo:decrease malloc
-//todo:false sharing
 //todo:memory size not enough
-//todo:radix sort maybe faster?
-
+//todo:dynammic allocate
+//todo:delete \n\r
 
 /**
  * @name omp_first_char_count_string_sort
@@ -48,6 +47,16 @@ void omp_prefix_sum(size_t arr [], int num);
  */
 void omp_quick_sort_partial(char** arr, size_t *starts, size_t *ends, int level);
 
+/**
+ * @name omp_radix_sort_partial
+ * @brief sort specified parts of the array of strings by radix-sort(parallelize by openmp)
+ * @param arr :[IN|OUT]array of strings to be sort
+ * @param starts :[IN]array of begin pos of each part
+ * @param ends :[IN]array of end pos of each part
+ * @param level :[IN] all the strings has a common prefix of "level" length
+ */
+void omp_radix_sort_partial(char** arr, size_t *starts, size_t *ends, int level);
+
 
 /**
  * @name omp_assign_group
@@ -63,4 +72,6 @@ void omp_quick_sort_partial(char** arr, size_t *starts, size_t *ends, int level)
  */
 void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t* num_groups_p, size_t num_strings, size_t* prefix_starts, size_t* prefix_ends);
 
+
+void omp_group_by(const char* file_path, size_t num_rows);
 #endif //PARALLELPROJECT_OMP_GROUP_BY_H

@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/hezhiwei/CLionProjects/ParallelProject/main.c
-test.h
-/home/hezhiwei/CLionProjects/ParallelProject/test.h
-
-/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c
+/home/hezhiwei/CLionProjects/ParallelProject/measure.c
+omp.h
+/home/hezhiwei/CLionProjects/ParallelProject/omp.h
+stdio.h
+-
+measure.h
+/home/hezhiwei/CLionProjects/ParallelProject/measure.h
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
 omp_group_by.h
 /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/measure.h
 
 /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
 string.h
@@ -37,16 +43,4 @@ stdint.h
 -
 stdio.h
 -
-
-/home/hezhiwei/CLionProjects/ParallelProject/test.h
-stdlib.h
-/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
-string.h
-/home/hezhiwei/CLionProjects/ParallelProject/string.h
-omp_group_by.h
-/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
-stdio.h
-/home/hezhiwei/CLionProjects/ParallelProject/stdio.h
-serial_funciton.h
-/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
 

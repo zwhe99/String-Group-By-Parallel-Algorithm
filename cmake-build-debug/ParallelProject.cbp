@@ -81,6 +81,12 @@
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/main.c">
 			<Option target="ParallelProject"/>
 		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/measure.c">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/measure.h">
+			<Option target="ParallelProject"/>
+		</Unit>
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c">
 			<Option target="ParallelProject"/>
 		</Unit>

@@ -97,7 +97,6 @@ void test_quick_string_sort(){
         printf("\n");
     }
 }
-
 void test_quick_sort_partial(){
     char** str_arr = (char**)malloc(10 * sizeof(char*));
     for (int i = 0; i < 10; ++i) {
@@ -123,7 +122,6 @@ void test_quick_sort_partial(){
         printf("\n");
     }
 }
-
 void test_omp_quick_sort_partial(){
     char** str_arr = (char**)malloc(10 * sizeof(char*));
     for (int i = 0; i < 10; ++i) {
@@ -149,7 +147,6 @@ void test_omp_quick_sort_partial(){
         printf("\n");
     }
 }
-
 void test_omp_prefix_sum() {
     int n = 1<<16;
     size_t* a = (size_t*)malloc((n) * sizeof(size_t));
@@ -163,7 +160,6 @@ void test_omp_prefix_sum() {
         printf("%zd ", a[i]);
     }
 }
-
 void test_assign_group(){
     char** str_arr = (char**)malloc(10 * sizeof(char*));
     char* group_keys[MAX_NUM_GROUPS];
@@ -197,7 +193,6 @@ void test_assign_group(){
 
 
 }
-
 void test_radix_sort_main(){
     char** str_arr = (char**)malloc(10 * sizeof(char*));
 
@@ -222,4 +217,52 @@ void test_radix_sort_main(){
         printf("%s", str_arr[i]);
         printf("\n");
     }
+}
+
+void test_parallel_read_file(const char* file_path, int num_rows){
+    char** str_srr1 = calloc(num_rows, sizeof(char*));
+    char** str_srr2 = calloc(num_rows, sizeof(char*));
+    int i = 0;
+    FILE *f;
+    size_t n = 0;
+    double total = 0;
+    for(int k = 0;k<10000;++k){
+        double start, end, el;
+        start = omp_get_wtime();
+        f = fopen(file_path, "r");
+        for(i = 0;i<num_rows;++i){
+            getline(&str_srr2[i], &n, f);
+        }
+        fclose(f);
+        end = omp_get_wtime();
+        total += end-start;
+    }
+    printf("%d %f \n", 0, total);
+
+    for(int n_thread = 1;n_thread<=16;n_thread++){
+        for(int k = 0;k<10000;++k){
+            double start, end, el;
+            start = omp_get_wtime();
+            f = fopen(file_path, "r");
+#pragma omp parallel for num_threads(n_thread) default(none), shared(num_rows, str_srr2, n, f)
+            for(i = 0;i<num_rows;++i){
+                getline(&str_srr2[i], &n, f);
+            }
+            fclose(f);
+            end = omp_get_wtime();
+            total += end-start;
+        }
+
+        printf("%d %f \n", n_thread, total);
+        total = 0;
+    }
+
+
+    for(i = 0;i<num_rows;++i){
+//        printf("%s\t%s", str_srr1[i], str_srr2[i]);
+        if(strcmp(str_srr1[i], str_srr2[i]) != 0){
+            printf("wrong");
+        }
+    }
+
 }
