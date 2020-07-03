@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ParallelProject.dir/main.c.o"
   "CMakeFiles/ParallelProject.dir/measure.c.o"
+  "CMakeFiles/ParallelProject.dir/mpi_group_by.c.o"
   "CMakeFiles/ParallelProject.dir/omp_group_by.c.o"
   "CMakeFiles/ParallelProject.dir/serial_funcion.c.o"
   "CMakeFiles/ParallelProject.dir/test.c.o"

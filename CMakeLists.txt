@@ -2,11 +2,16 @@ cmake_minimum_required(VERSION 3.16)
 project(ParallelProject C)
 
 set(CMAKE_C_STANDARD 99)
+
+find_package(MPI REQUIRED)
+include_directories(${MPI_INCLUDE_PATH})
+SET(CMAKE_CXX_COMPILER mpicxx)
+SET(CMAKE_C_COMPILER  mpicc)
+
 # added -fopenmp
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c99 -fopenmp")
 
-
-add_executable(ParallelProject main.c omp_group_by.h omp_group_by.c test.h test.c serial_funciton.h serial_funcion.c measure.h measure.c)
+add_executable(ParallelProject main.c omp_group_by.h omp_group_by.c test.h test.c serial_funciton.h serial_funcion.c measure.h measure.c mpi_group_by.h mpi_group_by.c)
 
 message(STATUS "Checking OpenMP")
 find_package(OpenMP)
@@ -19,3 +24,4 @@ IF(OPENMP_FOUND)
 ELSE()
     message("Missed OpenMP!")
 ENDIF()
+

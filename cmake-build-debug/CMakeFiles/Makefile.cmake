@@ -24,6 +24,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/Compiler/GNU-C.cmake"
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/Compiler/GNU.cmake"
+  "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/FindMPI.cmake"
+  "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/FindMPI/test_mpi.c"
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/FindOpenMP.cmake"
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake"
   "/home/hezhiwei/Downloads/CLion-2020.1.2/clion-2020.1.2/bin/cmake/linux/share/cmake-3.16/Modules/FindPackageMessage.cmake"

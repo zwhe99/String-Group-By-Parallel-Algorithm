@@ -11,7 +11,6 @@
 #include <stdio.h>
 #define SIZE_OF_CNT8 1<<8
 #define SIZE_OF_CNT16 1<<16
-#define MAX_NUM_GROUPS 100000
 #define RADIX_MIN_NUM 30
 
 /**
@@ -49,6 +48,7 @@ void first_char_count_string_sort(char*** str_arr_p , size_t num, size_t** begin
  * @param level :[IN] The strings has been sorted according their "level" length prefix.
  */
 void quick_sort(char** arr, size_t num, int level);
+
 
 /**
  * @name quick_sort_partial

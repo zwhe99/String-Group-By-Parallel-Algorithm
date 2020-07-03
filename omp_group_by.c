@@ -125,10 +125,167 @@ void omp_first_char_count_string_sort(char*** str_arr_p, size_t num, size_t** be
     free(thread_sum);
 }
 
+void omp_first_char_count_string_sort2(char*** str_arr_p, size_t num, size_t** begin_pos_p, size_t** end_pos_p)
+{
+    char** str_arr = *str_arr_p;
+    size_t* cnt = calloc(SIZE_OF_CNT8, sizeof(size_t)); //use for counting sort
+    size_t* beg_pos = calloc(SIZE_OF_CNT8, sizeof(size_t));
+    size_t* thread_sum;
+    size_t* cnt_private;
+    size_t it = 0, pre_sum = 0;
+    int i = 0, k = 0;
+    uint8_t * first_lets = calloc(num, sizeof(char)); //store the first elem of each string
+    char** temp = calloc(num, sizeof(char*)); //store the sorted array
+    if (!(beg_pos && cnt && first_lets && temp)) {
+        fprintf(stderr, "fail to malloc in omp_first_char_count_string_sort");
+        exit(-1);
+    }
+
+
+#pragma omp parallel default(none) private(i, it, k) shared(num, first_lets, str_arr, cnt, pre_sum, temp, cnt_private, thread_sum, stderr, beg_pos)
+    {
+        const int num_threads = omp_get_num_threads();
+        const int my_id = omp_get_thread_num();
+
+        // construct a array of size [num_threads X SIZE_OF_CNT8]
+        // cnt_private[i, j] storage # of appearance of char j in thread i.
+#pragma omp single
+        {
+            cnt_private = calloc(num_threads * (SIZE_OF_CNT8), sizeof(size_t));
+            if (!cnt_private) {
+                fprintf(stderr, "fail to malloc in omp_first_char_count_string_sort");
+                exit(-1);
+            }
+        }
+
+        //save the first letter of each string
+#pragma omp for schedule(static)
+        for (it = 0; it < num; ++it) {
+            first_lets[it] = str_arr[it][0];
+        }
+
+        //cal # of appearance of each letter in each thread
+#pragma omp for schedule(static)
+        for (it = 0; it < num; ++it) {
+            ++cnt_private[my_id * (SIZE_OF_CNT8) + first_lets[it]];
+        }
+
+        // add the result in each thread to cnt
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            for (k = 0; k < num_threads; ++k) {
+                cnt[i] += cnt_private[k * (SIZE_OF_CNT8) + i];
+            }
+        }
+
+
+        // cal begin pos of each category(exclusive prefix-sum)
+#pragma omp single
+        {
+            thread_sum = calloc((num_threads + 1), sizeof(size_t));
+            if (!thread_sum) {
+                fprintf(stderr, "fail to malloc in omp_first_char_count_string_sort");
+                exit(-1);
+            }
+        }
+
+        // save the appearance times of the last elements of each thread
+        size_t last_le_times;
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            last_le_times = cnt[i];
+        }
+
+        //cal prefix sum in each thread
+        size_t curr_sum, sum = 0; //private
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            curr_sum = sum;
+            sum = cnt[i];
+            cnt[i] = curr_sum;
+            sum += curr_sum;
+        }
+
+        //store (max prefix sum + the appearance times of the last elements) of each thread
+        thread_sum[my_id + 1] = curr_sum + last_le_times;
+
+#pragma omp barrier
+
+        //store offset of each thread
+        size_t offset = 0; //private
+        for (i = 0; i < (my_id + 1); ++i) {
+            offset += thread_sum[i];
+        }
+
+        // cal the begin pos of each group in cnt
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            cnt[i] += offset;
+        }
+
+        // cal the begin pos of each group for each process in cnt private
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            curr_sum = 0;
+            sum = 0;
+            for (k = 0; k < num_threads; ++k) {
+                curr_sum = sum;
+                sum = cnt_private[k * (SIZE_OF_CNT8) + i];
+                cnt_private[k * (SIZE_OF_CNT8) + i] = curr_sum;
+                sum += curr_sum;
+            }
+        }
+
+#pragma omp for schedule(static)
+        for (i = 0; i < SIZE_OF_CNT8; ++i) {
+            for (k = 0; k < num_threads; ++k) {
+                cnt_private[k * (SIZE_OF_CNT8) + i] += cnt[i];
+            }
+        }
+
+        // save begin pos of each group into beg_pos
+//#pragma omp single
+//        {
+//            memcpy(beg_pos, cnt, sizeof(size_t) * (SIZE_OF_CNT8));
+//        }
+#pragma omp for schedule(static)
+        for(it = 0; it < SIZE_OF_CNT8; it++){
+            beg_pos[it] = cnt[it];
+        }
+
+        //sort
+#pragma omp for schedule(static)
+        for (it = 0; it < num; ++it) {
+            temp[cnt_private[my_id * (SIZE_OF_CNT8) + first_lets[it]]++] = str_arr[it];
+        }
+
+//#pragma omp single
+//        {
+//            memcpy(cnt, cnt_private + (num_threads - 1)*(SIZE_OF_CNT8), sizeof(size_t) * (SIZE_OF_CNT8));
+//        }
+
+#pragma omp for schedule(static)
+        for(it = 0; it < SIZE_OF_CNT8; it++){
+            cnt[it] = cnt_private[(num_threads - 1)*(SIZE_OF_CNT8) + it];
+        }
+    }
+
+    //return value
+    *str_arr_p = temp;
+    *begin_pos_p = beg_pos;
+    *end_pos_p = cnt;
+
+    //free
+    free(first_lets);
+    free(cnt_private);
+    free(thread_sum);
+}
+
 void omp_quick_sort_partial(char** arr, size_t *starts, size_t *ends, int level){
     size_t i;
 #pragma omp parallel for default(none) private(i) shared(arr, starts, ends, level) schedule(dynamic)
     for(i=0; i < SIZE_OF_CNT8; ++i){
+        const int myid = omp_get_thread_num();
         if(ends[i] != starts[i]){
             quick_sort(arr+starts[i], ends[i] - starts[i], level);
         }
@@ -143,44 +300,6 @@ void omp_radix_sort_partial(char** arr, size_t *starts, size_t *ends, int level)
             radix_sort_main(arr+starts[i], ends[i] - starts[i], level);
         }
     }
-}
-
-//todo:not by myself
-void omp_prefix_sum(size_t arr[], int num)
-{
-    size_t* suma;
-    int i;
-#pragma omp parallel
-    {
-        const int ithread = omp_get_thread_num();
-        const int nthreads = omp_get_num_threads();
-#pragma omp single
-        {
-            suma = calloc(nthreads + 1, sizeof(size_t));
-            if (!suma) {
-                fprintf(stderr, "fail to malloc in omp_first_char_count_string_sort");
-                exit(-1);
-            }
-
-        }
-        size_t sum = 0;
-#pragma omp for schedule(static)
-        for (i = 0; i < num; i++) {
-            sum += arr[i];
-            arr[i] = sum;
-        }
-        suma[ithread + 1] = sum;
-#pragma omp barrier
-        size_t offset = 0;
-        for (i = 0; i < (ithread + 1); i++) {
-            offset += suma[i];
-        }
-#pragma omp for schedule(static)
-        for (i = 0; i < num; i++) {
-            arr[i] += offset;
-        }
-    }
-    free(suma);
 }
 
 void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t* num_groups_p, size_t num_strings, size_t* prefix_starts, size_t* prefix_ends) {
@@ -246,9 +365,9 @@ void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t*
 
 
         size_t private_num_groups = 0; //private
-        char* private_keys_arr [MAX_NUM_GROUPS/num_threads]; //private
-        int private_sizes_arr [MAX_NUM_GROUPS/num_threads]; //private
-        memset(private_sizes_arr, 0, MAX_NUM_GROUPS/num_threads);
+
+        char** private_keys_arr = calloc(num_strings, sizeof(char *)); //private
+        int* private_sizes_arr = calloc(num_strings, sizeof(int ));
 
 #pragma omp barrier
 
@@ -303,33 +422,26 @@ void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t*
     free(max_prefix_sums);
 } // end of omp_assign_group
 
-void omp_group_by(const char* file_path, size_t num_rows){
+void omp_group_by(char** str_arr, size_t num_rows){
     size_t* begin_pos, *lens;
-    FILE * fp;
-    char* group_keys[MAX_NUM_GROUPS];
-    char ** str_arr = calloc(num_rows, sizeof(char *));
-    size_t group_lens[MAX_NUM_GROUPS];
+
+    char ** group_keys = calloc(num_rows, sizeof(char *));
+    size_t* group_lens = calloc(num_rows, sizeof(size_t));
     size_t num_groups;
-    size_t n = 0, num_lines = 0;
+    size_t n = 0;
+    size_t i;
+    double start, end;
 
-    fp = fopen(file_path, "r");
-    if (fp == NULL){
-        fprintf(stderr, "omp_group_by: can't open %s", file_path);
-        exit(EXIT_FAILURE);
-    }
-    
-    while ((getline(&str_arr[num_lines], &n, fp)) != -1)
-    {
-        num_lines++;
-    }
-    fclose(fp);
-
-    omp_first_char_count_string_sort(&str_arr, num_lines, &begin_pos, &lens);
+    omp_first_char_count_string_sort2(&str_arr, num_rows, &begin_pos, &lens);
     omp_radix_sort_partial(str_arr, begin_pos, lens, 1);
-    omp_assign_group(str_arr, group_keys, group_lens, &num_groups, num_lines, begin_pos, lens);
+    omp_assign_group(str_arr, group_keys, group_lens, &num_groups, num_rows, begin_pos, lens);
 
-//    printf("# of groups: %zu \n", num_groups);
-//    for(size_t i =0;i<num_groups;++i){
-//        printf("%zd  %s", group_lens[i],group_keys[i]);
-//    }
+
+    printf("# of groups: %zu \n", num_groups);
+    for(i =0;i<num_groups;++i){
+        printf("%zd  %s", group_lens[i],group_keys[i]);
+    }
+    free(group_keys);
+    free(str_arr);
+    free(group_lens);
 }

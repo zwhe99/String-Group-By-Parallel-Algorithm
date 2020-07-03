@@ -54,8 +54,42 @@ void test_omp_count_string_sort(){
     strcpy(str_arr[8], "c");
     strcpy(str_arr[9], "abcd");
 
-
     omp_first_char_count_string_sort(&str_arr, 10, &begin_pos, &group_lens);
+
+    for (int i = 0; i < 10; ++i) {
+        printf("%s", str_arr[i]);
+        printf("\n");
+    }
+
+    printf("begin_pos and end_pos:\n");
+    for (int i = 0; i < 1<<8; ++i) {
+        printf("%c %zd  %zd\n", i, begin_pos[i], group_lens[i]);
+    }
+
+    for (int i = 0; i < 10; ++i) {
+        free(str_arr[i]);
+    }
+    free(str_arr);
+}
+void test_omp_count_string_sort2(){
+    char** str_arr = (char**)malloc(10 * sizeof(char*));
+    size_t* begin_pos, *group_lens;
+    for (int i = 0; i < 10; ++i) {
+        str_arr[i] = (char*)malloc(256*sizeof(char));
+    }
+    strcpy(str_arr[0], "aa");
+    strcpy(str_arr[1], "bb");
+    strcpy(str_arr[2], "cc");
+    strcpy(str_arr[3], "a");
+    strcpy(str_arr[4], "b");
+    strcpy(str_arr[5], "c");
+    strcpy(str_arr[6], "aa");
+    strcpy(str_arr[7], "bb");
+    strcpy(str_arr[8], "c");
+    strcpy(str_arr[9], "abcd");
+
+
+    omp_first_char_count_string_sort2(&str_arr, 10, &begin_pos, &group_lens);
 
     for (int i = 0; i < 10; ++i) {
         printf("%s", str_arr[i]);
@@ -147,23 +181,11 @@ void test_omp_quick_sort_partial(){
         printf("\n");
     }
 }
-void test_omp_prefix_sum() {
-    int n = 1<<16;
-    size_t* a = (size_t*)malloc((n) * sizeof(size_t));
-    for (int i = 0; i < n; i++) {
-        a[i] = i+1;
-        printf("%zd ", a[i]);
-    }
-    printf("\n");
-    omp_prefix_sum(a, n);
-    for (int i = 0; i < n; i++) {
-        printf("%zd ", a[i]);
-    }
-}
+
 void test_assign_group(){
     char** str_arr = (char**)malloc(10 * sizeof(char*));
-    char* group_keys[MAX_NUM_GROUPS];
-    size_t group_lens[MAX_NUM_GROUPS];
+    char* group_keys[10];
+    size_t group_lens[10];
     size_t num_groups;
 
     for (int i = 0; i < 10; ++i) {
@@ -183,7 +205,7 @@ void test_assign_group(){
     size_t* begin_pos, *lens;
 
     omp_first_char_count_string_sort(&str_arr, 10, &begin_pos, &lens);
-    omp_quick_sort_partial(str_arr, begin_pos, lens, 1);
+    omp_radix_sort_partial(str_arr, begin_pos, lens, 1);
     omp_assign_group(str_arr, group_keys, group_lens, &num_groups, 10, begin_pos, lens);
 
     printf("# of groups: %zu \n", num_groups);

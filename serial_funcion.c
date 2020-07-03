@@ -197,7 +197,7 @@ void radix_sort8(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* l
     uint8_t* letters = leb8 + beg;
 
     for (i = 0; i < num; ++i) {
-        letters[i] = src[i][level];
+        letters[i] = src[i+beg][level];
     }
 
     for (i = 0; i < num; ++i) {
@@ -211,13 +211,13 @@ void radix_sort8(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* l
     }
 
     for (i = 0; i < num; ++i) {
-        swapStringPointer(&dest[cnt[letters[i]]++], &src[i]);
+        swapStringPointer(&dest[beg + cnt[letters[i]]++], &src[beg + i]);
     }
 
     if (arr != dest) {
-        size_t b = 0, e = cnt[0];
-        for (size_t j = b; j < e; ++j) {
-            swapStringPointer(&src[j], &dest[j]);
+        size_t j = 0, e = cnt[0];
+        for (j = 0; j < e; ++j) {
+            swapStringPointer(&src[j+beg], &dest[j+beg]);
         }
     }
 
@@ -235,8 +235,8 @@ void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* 
     uint16_t* letters = leb16 + beg;
 
     for (i = 0; i < num; ++i) {
-        uint16_t sc = arr[i][level];
-        letters[i] = sc == 0 ? 0 : ((sc << 8) | arr[i][level + 1]);
+        uint16_t sc = arr[i+beg][level];
+        letters[i] = sc == 0 ? 0 : ((sc << 8) | arr[i+beg][level + 1]);
     }
 
     for(i = 0; i<num;++i){
@@ -250,7 +250,7 @@ void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* 
     }
 
     for (i = 0; i < num; ++i) {
-        swapStringPointer(&dest[cnt[letters[i]]++], &src[i]);
+        swapStringPointer(&dest[beg + cnt[letters[i]]++], &src[beg + i]);
     }
 
     if (arr != dest) {
@@ -258,7 +258,7 @@ void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* 
             size_t b = i == 0 ? 0 : cnt[(i << 8) - 1];
             size_t e = cnt[i << 8];
             for (j = b; j < e; ++j) {
-                swapStringPointer(&src[j], &dest[j]);
+                swapStringPointer(&src[beg + j], &dest[beg + j]);
             }
         }
     }

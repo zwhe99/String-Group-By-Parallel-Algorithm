@@ -11,10 +11,6 @@
 #include "stdlib.h"
 #include "stdint.h"
 
-//todo:decrease malloc
-//todo:memory size not enough
-//todo:dynammic allocate
-//todo:delete \n\r
 
 /**
  * @name omp_first_char_count_string_sort
@@ -26,6 +22,17 @@
  * @param end_pos_p :[OUT]pointer to the array that save the end position of each group
  */
 void omp_first_char_count_string_sort(char*** str_arr_p, size_t num, size_t** begin_pos_p, size_t** end_pos_p);
+
+/**
+ * @name omp_first_char_count_string_sort
+ * @brief use counting sort to sort the array of strings with the first letter as their keys
+ * and return the begin position and end position of each group(parallelize by openmp)
+ * @param str_arr_p :[IN|OUT]pointer to the array of strings
+ * @param num :[IN]size of the the array of strings
+ * @param begin_pos_p :[OUT]pointer to the array that save the begin position of each group
+ * @param end_pos_p :[OUT]pointer to the array that save the end position of each group
+ */
+void omp_first_char_count_string_sort2(char*** str_arr_p, size_t num, size_t** begin_pos_p, size_t** end_pos_p);
 
 
 /**
@@ -72,6 +79,11 @@ void omp_radix_sort_partial(char** arr, size_t *starts, size_t *ends, int level)
  */
 void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t* num_groups_p, size_t num_strings, size_t* prefix_starts, size_t* prefix_ends);
 
-
-void omp_group_by(const char* file_path, size_t num_rows);
+/**
+ * @name omp_group_by
+ * @brief perform group-by operation on str_arr, and print the result
+ * @param str_arr :[IN]array that to be grouped
+ * @param num_rows :[IN]size of str_arr
+ */
+void omp_group_by(char** str_arr, size_t num_rows);
 #endif //PARALLELPROJECT_OMP_GROUP_BY_H

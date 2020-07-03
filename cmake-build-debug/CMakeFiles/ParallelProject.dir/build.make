@@ -60,67 +60,80 @@ include CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/main.c.o: CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/main.c.o: ../main.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ParallelProject.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/main.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/main.c
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/main.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/main.c
 
 CMakeFiles/ParallelProject.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/main.c > CMakeFiles/ParallelProject.dir/main.c.i
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/main.c > CMakeFiles/ParallelProject.dir/main.c.i
 
 CMakeFiles/ParallelProject.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/main.c -o CMakeFiles/ParallelProject.dir/main.c.s
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/main.c -o CMakeFiles/ParallelProject.dir/main.c.s
 
 CMakeFiles/ParallelProject.dir/omp_group_by.c.o: CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/omp_group_by.c.o: ../omp_group_by.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ParallelProject.dir/omp_group_by.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/omp_group_by.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/omp_group_by.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c
 
 CMakeFiles/ParallelProject.dir/omp_group_by.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/omp_group_by.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c > CMakeFiles/ParallelProject.dir/omp_group_by.c.i
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c > CMakeFiles/ParallelProject.dir/omp_group_by.c.i
 
 CMakeFiles/ParallelProject.dir/omp_group_by.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/omp_group_by.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c -o CMakeFiles/ParallelProject.dir/omp_group_by.c.s
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c -o CMakeFiles/ParallelProject.dir/omp_group_by.c.s
 
 CMakeFiles/ParallelProject.dir/test.c.o: CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/test.c.o: ../test.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ParallelProject.dir/test.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/test.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/test.c
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/test.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/test.c
 
 CMakeFiles/ParallelProject.dir/test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/test.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/test.c > CMakeFiles/ParallelProject.dir/test.c.i
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/test.c > CMakeFiles/ParallelProject.dir/test.c.i
 
 CMakeFiles/ParallelProject.dir/test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/test.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/test.c -o CMakeFiles/ParallelProject.dir/test.c.s
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/test.c -o CMakeFiles/ParallelProject.dir/test.c.s
 
 CMakeFiles/ParallelProject.dir/serial_funcion.c.o: CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/serial_funcion.c.o: ../serial_funcion.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ParallelProject.dir/serial_funcion.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/serial_funcion.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/serial_funcion.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c
 
 CMakeFiles/ParallelProject.dir/serial_funcion.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/serial_funcion.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c > CMakeFiles/ParallelProject.dir/serial_funcion.c.i
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c > CMakeFiles/ParallelProject.dir/serial_funcion.c.i
 
 CMakeFiles/ParallelProject.dir/serial_funcion.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/serial_funcion.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c -o CMakeFiles/ParallelProject.dir/serial_funcion.c.s
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/serial_funcion.c -o CMakeFiles/ParallelProject.dir/serial_funcion.c.s
 
 CMakeFiles/ParallelProject.dir/measure.c.o: CMakeFiles/ParallelProject.dir/flags.make
 CMakeFiles/ParallelProject.dir/measure.c.o: ../measure.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ParallelProject.dir/measure.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/measure.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/measure.c
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/measure.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/measure.c
 
 CMakeFiles/ParallelProject.dir/measure.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/measure.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/measure.c > CMakeFiles/ParallelProject.dir/measure.c.i
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/measure.c > CMakeFiles/ParallelProject.dir/measure.c.i
 
 CMakeFiles/ParallelProject.dir/measure.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/measure.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/measure.c -o CMakeFiles/ParallelProject.dir/measure.c.s
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/measure.c -o CMakeFiles/ParallelProject.dir/measure.c.s
+
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: CMakeFiles/ParallelProject.dir/flags.make
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: ../mpi_group_by.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ParallelProject.dir/mpi_group_by.c.o"
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ParallelProject.dir/mpi_group_by.c.o   -c /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
+
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ParallelProject.dir/mpi_group_by.c.i"
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c > CMakeFiles/ParallelProject.dir/mpi_group_by.c.i
+
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ParallelProject.dir/mpi_group_by.c.s"
+	mpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c -o CMakeFiles/ParallelProject.dir/mpi_group_by.c.s
 
 # Object files for target ParallelProject
 ParallelProject_OBJECTS = \
@@ -128,7 +141,8 @@ ParallelProject_OBJECTS = \
 "CMakeFiles/ParallelProject.dir/omp_group_by.c.o" \
 "CMakeFiles/ParallelProject.dir/test.c.o" \
 "CMakeFiles/ParallelProject.dir/serial_funcion.c.o" \
-"CMakeFiles/ParallelProject.dir/measure.c.o"
+"CMakeFiles/ParallelProject.dir/measure.c.o" \
+"CMakeFiles/ParallelProject.dir/mpi_group_by.c.o"
 
 # External object files for target ParallelProject
 ParallelProject_EXTERNAL_OBJECTS =
@@ -138,9 +152,10 @@ ParallelProject: CMakeFiles/ParallelProject.dir/omp_group_by.c.o
 ParallelProject: CMakeFiles/ParallelProject.dir/test.c.o
 ParallelProject: CMakeFiles/ParallelProject.dir/serial_funcion.c.o
 ParallelProject: CMakeFiles/ParallelProject.dir/measure.c.o
+ParallelProject: CMakeFiles/ParallelProject.dir/mpi_group_by.c.o
 ParallelProject: CMakeFiles/ParallelProject.dir/build.make
 ParallelProject: CMakeFiles/ParallelProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable ParallelProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable ParallelProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ParallelProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

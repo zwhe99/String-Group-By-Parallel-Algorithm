@@ -13,9 +13,9 @@
 
 void test_count_string_sort();
 void test_omp_count_string_sort();
+void test_omp_count_string_sort2();
 void test_quick_string_sort();
 void test_quick_sort_partial();
-void test_omp_prefix_sum();
 
 void test_omp_quick_sort_partial();
 void test_assign_group();

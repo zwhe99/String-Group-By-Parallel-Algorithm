@@ -4,14 +4,24 @@
 CMakeFiles/ParallelProject.dir/main.c.o
  /home/hezhiwei/CLionProjects/ParallelProject/main.c
  /home/hezhiwei/CLionProjects/ParallelProject/measure.h
+ /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
  /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
  /home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
  /home/hezhiwei/CLionProjects/ParallelProject/test.h
+ /usr/include/mpich/mpi.h
+ /usr/include/mpich/mpicxx.h
+ /usr/include/mpich/mpio.h
 CMakeFiles/ParallelProject.dir/measure.c.o
  /home/hezhiwei/CLionProjects/ParallelProject/measure.c
  /home/hezhiwei/CLionProjects/ParallelProject/measure.h
  /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
  /home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o
+ /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
+ /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
+ /usr/include/mpich/mpi.h
+ /usr/include/mpich/mpicxx.h
+ /usr/include/mpich/mpio.h
 CMakeFiles/ParallelProject.dir/omp_group_by.c.o
  /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c
  /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h

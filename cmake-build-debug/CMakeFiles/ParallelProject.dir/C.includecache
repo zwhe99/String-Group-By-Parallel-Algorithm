@@ -6,41 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/home/hezhiwei/CLionProjects/ParallelProject/measure.c
-omp.h
-/home/hezhiwei/CLionProjects/ParallelProject/omp.h
-stdio.h
--
-measure.h
-/home/hezhiwei/CLionProjects/ParallelProject/measure.h
-stdlib.h
-/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
-omp_group_by.h
-/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
+mpi_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
 
-/home/hezhiwei/CLionProjects/ParallelProject/measure.h
-
-/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
+mpi.h
+/home/hezhiwei/CLionProjects/ParallelProject/mpi.h
 string.h
 -
-serial_funciton.h
-/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+mpi.h
+/home/hezhiwei/CLionProjects/ParallelProject/mpi.h
 stdio.h
--
-omp.h
--
+/home/hezhiwei/CLionProjects/ParallelProject/stdio.h
 stdlib.h
 /home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
-stdint.h
-/home/hezhiwei/CLionProjects/ParallelProject/stdint.h
 
-/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
-string.h
+/usr/include/mpich/mpi.h
+stddef.h
 -
-stdlib.h
-/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+cstdint
+-
 stdint.h
 -
+mpio.h
+/usr/include/mpich/mpio.h
+mpicxx.h
+/usr/include/mpich/mpicxx.h
+
+/usr/include/mpich/mpicxx.h
 stdio.h
 -
+
+/usr/include/mpich/mpio.h
+mpi.h
+/usr/include/mpich/mpi.h
 

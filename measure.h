@@ -4,6 +4,8 @@
 
 #ifndef PARALLELPROJECT_MEASURE_H
 #define PARALLELPROJECT_MEASURE_H
-void quick_vs_radix();
-void mes_omp_group_by();
+#include <string.h>
+
+
+void mes_omp_group_by(const char * file_path, size_t num_rows);
 #endif //PARALLELPROJECT_MEASURE_H

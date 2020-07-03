@@ -3,14 +3,24 @@
 
 CMakeFiles/ParallelProject.dir/main.c.o: ../main.c
 CMakeFiles/ParallelProject.dir/main.c.o: ../measure.h
+CMakeFiles/ParallelProject.dir/main.c.o: ../mpi_group_by.h
 CMakeFiles/ParallelProject.dir/main.c.o: ../omp_group_by.h
 CMakeFiles/ParallelProject.dir/main.c.o: ../serial_funciton.h
 CMakeFiles/ParallelProject.dir/main.c.o: ../test.h
+CMakeFiles/ParallelProject.dir/main.c.o: /usr/include/mpich/mpi.h
+CMakeFiles/ParallelProject.dir/main.c.o: /usr/include/mpich/mpicxx.h
+CMakeFiles/ParallelProject.dir/main.c.o: /usr/include/mpich/mpio.h
 
 CMakeFiles/ParallelProject.dir/measure.c.o: ../measure.c
 CMakeFiles/ParallelProject.dir/measure.c.o: ../measure.h
 CMakeFiles/ParallelProject.dir/measure.c.o: ../omp_group_by.h
 CMakeFiles/ParallelProject.dir/measure.c.o: ../serial_funciton.h
+
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: ../mpi_group_by.c
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: ../mpi_group_by.h
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: /usr/include/mpich/mpi.h
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: /usr/include/mpich/mpicxx.h
+CMakeFiles/ParallelProject.dir/mpi_group_by.c.o: /usr/include/mpich/mpio.h
 
 CMakeFiles/ParallelProject.dir/omp_group_by.c.o: ../omp_group_by.c
 CMakeFiles/ParallelProject.dir/omp_group_by.c.o: ../omp_group_by.h

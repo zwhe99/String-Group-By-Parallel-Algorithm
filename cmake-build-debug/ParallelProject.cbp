@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/mpich"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -64,6 +65,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/mpich"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
@@ -85,6 +87,12 @@
 			<Option target="ParallelProject"/>
 		</Unit>
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/measure.h">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h">
 			<Option target="ParallelProject"/>
 		</Unit>
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.c">

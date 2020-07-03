@@ -194,6 +194,47 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Executable for running MPI programs.
+MPIEXEC_EXECUTABLE:FILEPATH=/usr/bin/mpiexec
+
+//Maximum number of processors available to run MPI applications.
+MPIEXEC_MAX_NUMPROCS:STRING=4
+
+//Flag used by MPI to specify the number of processes for mpiexec;
+// the next option will be the number of processes.
+MPIEXEC_NUMPROC_FLAG:STRING=-n
+
+//These flags will be placed after all flags passed to mpiexec.
+MPIEXEC_POSTFLAGS:STRING=
+
+//These flags will be directly before the executable that is being
+// run by mpiexec.
+MPIEXEC_PREFLAGS:STRING=
+
+//MPI C additional include directories
+MPI_C_ADDITIONAL_INCLUDE_DIRS:STRING=
+
+//MPI compiler for C
+MPI_C_COMPILER:FILEPATH=/usr/bin/mpicc
+
+//MPI C compilation definitions
+MPI_C_COMPILE_DEFINITIONS:STRING=
+
+//MPI C compilation options
+MPI_C_COMPILE_OPTIONS:STRING=
+
+//Path to a file.
+MPI_C_HEADER_DIR:PATH=/usr/include/mpich
+
+//MPI C libraries to link against
+MPI_C_LIB_NAMES:STRING=mpich
+
+//MPI C linker flags
+MPI_C_LINK_FLAGS:STRING=-Wl,-Bsymbolic-functions
+
+//Location of the mpich library for MPI
+MPI_mpich_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libmpich.so
+
 //C compiler flags for OpenMP parallelization
 OpenMP_C_FLAGS:STRING=-fopenmp
 
@@ -354,10 +395,42 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding MPI
+FIND_PACKAGE_MESSAGE_DETAILS_MPI:INTERNAL=[TRUE][c ][v3.1()]
+//Details about finding MPI_C
+FIND_PACKAGE_MESSAGE_DETAILS_MPI_C:INTERNAL=[/usr/lib/x86_64-linux-gnu/libmpich.so][mpich][/usr/include/mpich][TRUE][v3.1()]
 //Details about finding OpenMP
 FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][c ][v()]
 //Details about finding OpenMP_C
 FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp][/usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so][/usr/lib/x86_64-linux-gnu/libpthread.so][v()]
+//ADVANCED property for variable: MPIEXEC_EXECUTABLE
+MPIEXEC_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPIEXEC_MAX_NUMPROCS
+MPIEXEC_MAX_NUMPROCS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPIEXEC_NUMPROC_FLAG
+MPIEXEC_NUMPROC_FLAG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPIEXEC_POSTFLAGS
+MPIEXEC_POSTFLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPIEXEC_PREFLAGS
+MPIEXEC_PREFLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_ADDITIONAL_INCLUDE_DIRS
+MPI_C_ADDITIONAL_INCLUDE_DIRS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_COMPILER
+MPI_C_COMPILER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_COMPILE_DEFINITIONS
+MPI_C_COMPILE_DEFINITIONS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_COMPILE_OPTIONS
+MPI_C_COMPILE_OPTIONS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_HEADER_DIR
+MPI_C_HEADER_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_LIB_NAMES
+MPI_C_LIB_NAMES-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MPI_C_LINK_FLAGS
+MPI_C_LINK_FLAGS-ADVANCED:INTERNAL=1
+//Result of TRY_COMPILE
+MPI_RESULT_C_test_mpi_normal:INTERNAL=TRUE
+//ADVANCED property for variable: MPI_mpich_LIBRARY
+MPI_mpich_LIBRARY-ADVANCED:INTERNAL=1
 //Result of TRY_COMPILE
 OpenMP_COMPILE_RESULT_C_fopenmp:INTERNAL=TRUE
 //ADVANCED property for variable: OpenMP_C_FLAGS

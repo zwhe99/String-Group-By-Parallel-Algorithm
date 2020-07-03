@@ -177,6 +177,33 @@ measure.c.s:
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/measure.c.s
 .PHONY : measure.c.s
 
+mpi_group_by.o: mpi_group_by.c.o
+
+.PHONY : mpi_group_by.o
+
+# target to build an object file
+mpi_group_by.c.o:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/mpi_group_by.c.o
+.PHONY : mpi_group_by.c.o
+
+mpi_group_by.i: mpi_group_by.c.i
+
+.PHONY : mpi_group_by.i
+
+# target to preprocess a source file
+mpi_group_by.c.i:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/mpi_group_by.c.i
+.PHONY : mpi_group_by.c.i
+
+mpi_group_by.s: mpi_group_by.c.s
+
+.PHONY : mpi_group_by.s
+
+# target to generate assembly for a file
+mpi_group_by.c.s:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/mpi_group_by.c.s
+.PHONY : mpi_group_by.c.s
+
 omp_group_by.o: omp_group_by.c.o
 
 .PHONY : omp_group_by.o
@@ -273,6 +300,9 @@ help:
 	@echo "... measure.o"
 	@echo "... measure.i"
 	@echo "... measure.s"
+	@echo "... mpi_group_by.o"
+	@echo "... mpi_group_by.i"
+	@echo "... mpi_group_by.s"
 	@echo "... omp_group_by.o"
 	@echo "... omp_group_by.i"
 	@echo "... omp_group_by.s"
