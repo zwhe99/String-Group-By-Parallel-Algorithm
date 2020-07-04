@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/hashmap.c">
+			<Option target="ParallelProject"/>
+		</Unit>
+		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/hashmap.h">
+			<Option target="ParallelProject"/>
+		</Unit>
 		<Unit filename="/home/hezhiwei/CLionProjects/ParallelProject/main.c">
 			<Option target="ParallelProject"/>
 		</Unit>

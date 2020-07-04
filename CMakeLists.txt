@@ -11,7 +11,7 @@ SET(CMAKE_C_COMPILER  mpicc)
 # added -fopenmp
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c99 -fopenmp")
 
-add_executable(ParallelProject main.c omp_group_by.h omp_group_by.c test.h test.c serial_funciton.h serial_funcion.c measure.h measure.c mpi_group_by.h mpi_group_by.c)
+add_executable(ParallelProject main.c omp_group_by.h omp_group_by.c test.h test.c serial_funciton.h serial_funcion.c measure.h measure.c mpi_group_by.h mpi_group_by.c hashmap.c)
 
 message(STATUS "Checking OpenMP")
 find_package(OpenMP)

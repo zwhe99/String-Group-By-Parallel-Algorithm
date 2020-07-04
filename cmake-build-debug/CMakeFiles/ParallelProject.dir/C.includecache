@@ -6,9 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/hezhiwei/CLionProjects/ParallelProject/hashmap.h
+stddef.h
+-
+hashmap_base.h
+/home/hezhiwei/CLionProjects/ParallelProject/hashmap_base.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/hashmap_base.h
+stdbool.h
+-
+
 /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
 mpi_group_by.h
 /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
+serial_funciton.h
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
 
 /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
 mpi.h
@@ -21,6 +33,20 @@ stdio.h
 /home/hezhiwei/CLionProjects/ParallelProject/stdio.h
 stdlib.h
 /home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+limits.h
+-
+hashmap.h
+/home/hezhiwei/CLionProjects/ParallelProject/hashmap.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+string.h
+-
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+stdint.h
+-
+stdio.h
+-
 
 /usr/include/mpich/mpi.h
 stddef.h

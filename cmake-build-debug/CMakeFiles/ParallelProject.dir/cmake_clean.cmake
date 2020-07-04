@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ParallelProject.dir/hashmap.c.o"
   "CMakeFiles/ParallelProject.dir/main.c.o"
   "CMakeFiles/ParallelProject.dir/measure.c.o"
   "CMakeFiles/ParallelProject.dir/mpi_group_by.c.o"

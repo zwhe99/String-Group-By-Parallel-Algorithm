@@ -74,12 +74,12 @@ clean: CMakeFiles/ParallelProject.dir/clean
 CMakeFiles/ParallelProject.dir/all:
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/depend
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target ParallelProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target ParallelProject"
 .PHONY : CMakeFiles/ParallelProject.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ParallelProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ParallelProject.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hezhiwei/CLionProjects/ParallelProject/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/ParallelProject.dir/rule

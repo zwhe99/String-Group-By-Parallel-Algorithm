@@ -125,5 +125,5 @@ void radix_sort8(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* l
  */
 void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* leb16, size_t beg, size_t end, int level);
 
-
+unsigned int next_power_2(unsigned int n);
 #endif //PARALLELPROJECT_SERIAL_FUNCITON_H

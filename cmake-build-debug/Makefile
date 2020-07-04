@@ -123,6 +123,33 @@ ParallelProject/fast:
 	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/build
 .PHONY : ParallelProject/fast
 
+hashmap.o: hashmap.c.o
+
+.PHONY : hashmap.o
+
+# target to build an object file
+hashmap.c.o:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/hashmap.c.o
+.PHONY : hashmap.c.o
+
+hashmap.i: hashmap.c.i
+
+.PHONY : hashmap.i
+
+# target to preprocess a source file
+hashmap.c.i:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/hashmap.c.i
+.PHONY : hashmap.c.i
+
+hashmap.s: hashmap.c.s
+
+.PHONY : hashmap.s
+
+# target to generate assembly for a file
+hashmap.c.s:
+	$(MAKE) -f CMakeFiles/ParallelProject.dir/build.make CMakeFiles/ParallelProject.dir/hashmap.c.s
+.PHONY : hashmap.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ParallelProject"
+	@echo "... hashmap.o"
+	@echo "... hashmap.i"
+	@echo "... hashmap.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
