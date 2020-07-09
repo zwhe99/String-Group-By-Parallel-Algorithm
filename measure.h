@@ -7,5 +7,5 @@
 #include <string.h>
 
 
-void mes_omp_group_by(const char * file_path, size_t num_rows);
+void mes_omp_group_by(const char *src_file_path, size_t num_rows, const char *dest_file_path);
 #endif //PARALLELPROJECT_MEASURE_H

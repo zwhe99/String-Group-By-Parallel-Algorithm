@@ -26,6 +26,7 @@ CMakeFiles/ParallelProject.dir/mpi_group_by.c.o
  /home/hezhiwei/CLionProjects/ParallelProject/hashmap_base.h
  /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
  /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
+ /home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
  /home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
  /usr/include/mpich/mpi.h
  /usr/include/mpich/mpicxx.h

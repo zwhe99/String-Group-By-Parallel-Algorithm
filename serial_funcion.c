@@ -20,12 +20,12 @@ void swapStringPointer(char** s1_p, char** s2_p) {
 void first_char_count_string_sort(char*** str_arr_p , size_t num, size_t** begin_pos_p, size_t** end_pos_p)
 {
     char** str_arr = *str_arr_p;
-    size_t* cnt = calloc(SIZE_OF_CNT8, sizeof(size_t)); //use for counting sort
-    size_t* beg_pos = calloc(SIZE_OF_CNT8, sizeof(size_t));
+    size_t* cnt = calloc(SIZE_OF_CNT, sizeof(size_t)); //use for counting sort
+    size_t* beg_pos = calloc(SIZE_OF_CNT, sizeof(size_t));
     size_t it = 0, pre_sum = 0;
     int i=0;
 
-    uint8_t * first_lets = calloc(num, sizeof(uint8_t));  //store the first elem of each string
+    uint16_t * first_lets = calloc(num, sizeof(uint16_t));  //store the first elem of each string
     char** temp = calloc(num, sizeof(char*));  //store the sorted array
     if (!(beg_pos && cnt && first_lets && temp)) {
         fprintf(stderr, "fail to malloc in first_char_count_string_sort");
@@ -34,7 +34,7 @@ void first_char_count_string_sort(char*** str_arr_p , size_t num, size_t** begin
 
     //save the first letter of each string
     for (it = 0; it < num; ++it) {
-        first_lets[it] = str_arr[it][0];
+        first_lets[it] = uint16_map_to_idx((str_arr[it][0]<<8)|str_arr[it][1]);
     }
 
     //cal # of appearance of each letter
@@ -43,11 +43,11 @@ void first_char_count_string_sort(char*** str_arr_p , size_t num, size_t** begin
     }
 
     // cal begin pos of each category
-    for (i = 0; i < SIZE_OF_CNT8; ++i) {
+    for (i = 0; i < SIZE_OF_CNT; ++i) {
         swapInt(&pre_sum, &cnt[i]);
         pre_sum += cnt[i];
     }
-    memcpy(beg_pos, cnt, sizeof(size_t)*(SIZE_OF_CNT8));
+    memcpy(beg_pos, cnt, sizeof(size_t)*(SIZE_OF_CNT));
 
 
     // sort and save res to temp
@@ -108,7 +108,7 @@ void quick_sort(char **arr, size_t num, int level) {
 
 void quick_sort_partial(char** arr, size_t* starts, size_t *ends, int level){
     size_t i;
-    for(i=0; i < SIZE_OF_CNT8; ++i){
+    for(i=0; i < SIZE_OF_CNT; ++i){
         if(ends[i] != 0){
             quick_sort(arr+starts[i], ends[i] - starts[i], level);
         }
@@ -117,7 +117,7 @@ void quick_sort_partial(char** arr, size_t* starts, size_t *ends, int level){
 
 void radix_sort_partial(char** arr, size_t* starts, size_t *ends, int level){
     size_t i;
-    for(i=0; i < SIZE_OF_CNT8; ++i){
+    for(i=0; i < SIZE_OF_CNT; ++i){
         if(ends[i] != 0){
             radix_sort_main(arr+starts[i], ends[i] - starts[i], level);
         }
@@ -131,6 +131,11 @@ void radix_sort_main(char** arr, size_t num, int level){
     uint16_t* letters = letter_base16;
     size_t cnt[SIZE_OF_CNT16] = {0};
     size_t i, j;
+
+    if(!(temp_arr && letter_base8 && letter_base16)){
+        fprintf(stderr, "cant allocate memory in radix sort main");
+        exit(-1);
+    }
 
     for (i = 0; i < num; ++i) {
         uint16_t sc = arr[i][level];
@@ -166,7 +171,10 @@ void radix_sort_main(char** arr, size_t num, int level){
         }
     }
 
-    
+
+    free(temp_arr);
+    free(letter_base8);
+    free(letter_base16);
 }
 
 inline void radix_sort_inner(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* leb16, size_t beg, size_t end, int level){
@@ -285,4 +293,23 @@ unsigned int next_power_2(unsigned int n)
     }
 
     return 1 << count;
+}
+
+char **alloc_2d_char(size_t rows, size_t cols) {
+    char *data = (char *)malloc(rows*cols*sizeof(char ));
+    char **array= (char **)malloc(rows*sizeof(char* ));
+    size_t i;
+    for (i=0; i<rows; i++)
+        array[i] = &(data[cols*i]);
+    return array;
+}
+
+int uint16_map_to_idx(uint16_t ch){
+    uint16_t diff = ch - 0X4141;
+    uint16_t idx = (diff/0X00FF)*7 + diff%0X00FF;
+    if (!(idx>=0&&idx<=63)){
+        fprintf(stderr, "value %d err in uint16_map_to_idx",ch);
+        exit(-1);
+    }
+    return idx;
 }

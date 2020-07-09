@@ -9,16 +9,16 @@ void test_count_string_sort() {
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aa");
-    strcpy(str_arr[1], "bb");
-    strcpy(str_arr[2], "cc");
-    strcpy(str_arr[3], "a");
-    strcpy(str_arr[4], "b");
-    strcpy(str_arr[5], "c");
-    strcpy(str_arr[6], "aa");
-    strcpy(str_arr[7], "bb");
-    strcpy(str_arr[8], "c");
-    strcpy(str_arr[9], "abcd");
+    strcpy(str_arr[0], "HH");
+    strcpy(str_arr[1], "HB");
+    strcpy(str_arr[2], "DC");
+    strcpy(str_arr[3], "CE");
+    strcpy(str_arr[4], "HA");
+    strcpy(str_arr[5], "DF");
+    strcpy(str_arr[6], "EF");
+    strcpy(str_arr[7], "FFF");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
     first_char_count_string_sort(&str_arr, 10, &begin_pos, &end_pos);
 
@@ -28,7 +28,7 @@ void test_count_string_sort() {
     }
 
     printf("begin_pos and end_pos:\n");
-    for (int i = 0; i < 1<<8; ++i) {
+    for (int i = 0; i < SIZE_OF_CNT; ++i) {
         printf("%d %zd  %zd\n", i, begin_pos[i], end_pos[i]);
     }
 
@@ -43,16 +43,16 @@ void test_omp_count_string_sort(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aa");
-    strcpy(str_arr[1], "bb");
-    strcpy(str_arr[2], "cc");
-    strcpy(str_arr[3], "a");
-    strcpy(str_arr[4], "b");
-    strcpy(str_arr[5], "c");
-    strcpy(str_arr[6], "aa");
-    strcpy(str_arr[7], "bb");
-    strcpy(str_arr[8], "c");
-    strcpy(str_arr[9], "abcd");
+    strcpy(str_arr[0], "HH");
+    strcpy(str_arr[1], "HB");
+    strcpy(str_arr[2], "DC");
+    strcpy(str_arr[3], "CE");
+    strcpy(str_arr[4], "HA");
+    strcpy(str_arr[5], "DF");
+    strcpy(str_arr[6], "EF");
+    strcpy(str_arr[7], "FFF");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
     omp_first_char_count_string_sort(&str_arr, 10, &begin_pos, &group_lens);
 
@@ -62,8 +62,8 @@ void test_omp_count_string_sort(){
     }
 
     printf("begin_pos and end_pos:\n");
-    for (int i = 0; i < 1<<8; ++i) {
-        printf("%c %zd  %zd\n", i, begin_pos[i], group_lens[i]);
+    for (int i = 0; i < SIZE_OF_CNT; ++i) {
+        printf("%d %zd  %zd\n", i, begin_pos[i], group_lens[i]);
     }
 
     for (int i = 0; i < 10; ++i) {
@@ -77,16 +77,16 @@ void test_omp_count_string_sort2(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aa");
-    strcpy(str_arr[1], "bb");
-    strcpy(str_arr[2], "cc");
-    strcpy(str_arr[3], "a");
-    strcpy(str_arr[4], "b");
-    strcpy(str_arr[5], "c");
-    strcpy(str_arr[6], "aa");
-    strcpy(str_arr[7], "bb");
-    strcpy(str_arr[8], "c");
-    strcpy(str_arr[9], "abcd");
+    strcpy(str_arr[0], "HH");
+    strcpy(str_arr[1], "HB");
+    strcpy(str_arr[2], "DC");
+    strcpy(str_arr[3], "CE");
+    strcpy(str_arr[4], "HA");
+    strcpy(str_arr[5], "DF");
+    strcpy(str_arr[6], "EF");
+    strcpy(str_arr[7], "FFF");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
 
     omp_first_char_count_string_sort2(&str_arr, 10, &begin_pos, &group_lens);
@@ -97,8 +97,8 @@ void test_omp_count_string_sort2(){
     }
 
     printf("begin_pos and end_pos:\n");
-    for (int i = 0; i < 1<<8; ++i) {
-        printf("%c %zd  %zd\n", i, begin_pos[i], group_lens[i]);
+    for (int i = 0; i < SIZE_OF_CNT; ++i) {
+        printf("%d %zd  %zd\n", i, begin_pos[i], group_lens[i]);
     }
 
     for (int i = 0; i < 10; ++i) {
@@ -112,16 +112,16 @@ void test_quick_string_sort(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aad");
-    strcpy(str_arr[1], "abc");
-    strcpy(str_arr[2], "bcb");
-    strcpy(str_arr[3], "bda");
-    strcpy(str_arr[4], "bad");
-    strcpy(str_arr[5], "cbc");
-    strcpy(str_arr[6], "dcb");
-    strcpy(str_arr[7], "ddhh");
-    strcpy(str_arr[8], "da");
-    strcpy(str_arr[9], "dbcd");
+    strcpy(str_arr[0], "HHHHH");
+    strcpy(str_arr[1], "HBABCDEF");
+    strcpy(str_arr[2], "DFBCAD");
+    strcpy(str_arr[3], "CEBGHD");
+    strcpy(str_arr[4], "HAAACB");
+    strcpy(str_arr[5], "DFFG");
+    strcpy(str_arr[6], "EF");
+    strcpy(str_arr[7], "FFEEE");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
 
     quick_sort(str_arr, 10, 0);
@@ -136,17 +136,16 @@ void test_quick_sort_partial(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aad");
-    strcpy(str_arr[1], "abc");
-    strcpy(str_arr[2], "bcb");
-    strcpy(str_arr[3], "bda");
-    strcpy(str_arr[4], "bad");
-    strcpy(str_arr[5], "cbc");
-    strcpy(str_arr[6], "dcb");
-    strcpy(str_arr[7], "ddhh");
-    strcpy(str_arr[8], "da");
-    strcpy(str_arr[9], "dbcd");
-
+    strcpy(str_arr[0], "HHHHH");
+    strcpy(str_arr[1], "HHABCDEF");
+    strcpy(str_arr[2], "DFBCAD");
+    strcpy(str_arr[3], "DFBGHD");
+    strcpy(str_arr[4], "HAAACB");
+    strcpy(str_arr[5], "HAFG");
+    strcpy(str_arr[6], "HA");
+    strcpy(str_arr[7], "FFEEE");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
     size_t* begin_pos, *end_pos;
     first_char_count_string_sort(&str_arr, 10, &begin_pos, &end_pos);
     quick_sort_partial(str_arr, begin_pos, end_pos, 1);
@@ -161,16 +160,16 @@ void test_omp_quick_sort_partial(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "aad");
-    strcpy(str_arr[1], "abc");
-    strcpy(str_arr[2], "bcb");
-    strcpy(str_arr[3], "bda");
-    strcpy(str_arr[4], "bad");
-    strcpy(str_arr[5], "cbc");
-    strcpy(str_arr[6], "dcb");
-    strcpy(str_arr[7], "ddhh");
-    strcpy(str_arr[8], "da");
-    strcpy(str_arr[9], "dbcd");
+    strcpy(str_arr[0], "HHHHH");
+    strcpy(str_arr[1], "HHABCDEF");
+    strcpy(str_arr[2], "DFBCAD");
+    strcpy(str_arr[3], "DFBGHD");
+    strcpy(str_arr[4], "HAAACB");
+    strcpy(str_arr[5], "HAFG");
+    strcpy(str_arr[6], "HA");
+    strcpy(str_arr[7], "FFEEE");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
     size_t* begin_pos, *end_pos;
     first_char_count_string_sort(&str_arr, 10, &begin_pos, &end_pos);
@@ -191,16 +190,16 @@ void test_assign_group(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "abdh");
-    strcpy(str_arr[1], "bcflmn");
-    strcpy(str_arr[2], "abdh");
-    strcpy(str_arr[3], "abei");
-    strcpy(str_arr[4], "abej");
-    strcpy(str_arr[5], "bbej");
-    strcpy(str_arr[6], "bcfk");
-    strcpy(str_arr[7], "bcflmn");
-    strcpy(str_arr[8], "abdh");
-    strcpy(str_arr[9], "bcgo");
+    strcpy(str_arr[0], "HHHHH");
+    strcpy(str_arr[1], "HHHHH");
+    strcpy(str_arr[2], "DFBCAD");
+    strcpy(str_arr[3], "DFBGHD");
+    strcpy(str_arr[4], "DFBCAD");
+    strcpy(str_arr[5], "DFBGHD");
+    strcpy(str_arr[6], "FFEEE");
+    strcpy(str_arr[7], "FFEEE");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "FFEEE");
 
     size_t* begin_pos, *lens;
 
@@ -221,16 +220,16 @@ void test_radix_sort_main(){
     for (int i = 0; i < 10; ++i) {
         str_arr[i] = (char*)malloc(256*sizeof(char));
     }
-    strcpy(str_arr[0], "bad");
-    strcpy(str_arr[1], "abc");
-    strcpy(str_arr[2], "bdb");
-    strcpy(str_arr[3], "bda");
-    strcpy(str_arr[4], "bad");
-    strcpy(str_arr[5], "abc");
-    strcpy(str_arr[6], "dab");
-    strcpy(str_arr[7], "ddhh");
-    strcpy(str_arr[8], "da");
-    strcpy(str_arr[9], "dbcd");
+    strcpy(str_arr[0], "HHHHH");
+    strcpy(str_arr[1], "HHABCDEF");
+    strcpy(str_arr[2], "DFBCAD");
+    strcpy(str_arr[3], "DFBGHD");
+    strcpy(str_arr[4], "HAAACB");
+    strcpy(str_arr[5], "HAFG");
+    strcpy(str_arr[6], "HA");
+    strcpy(str_arr[7], "FFEEE");
+    strcpy(str_arr[8], "ADBD");
+    strcpy(str_arr[9], "ADE");
 
 
     radix_sort_main(str_arr, 10, 0);

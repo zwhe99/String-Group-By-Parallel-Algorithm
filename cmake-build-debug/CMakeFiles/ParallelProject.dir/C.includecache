@@ -16,11 +16,17 @@ hashmap_base.h
 stdbool.h
 -
 
-/home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.c
+/home/hezhiwei/CLionProjects/ParallelProject/main.c
+test.h
+/home/hezhiwei/CLionProjects/ParallelProject/test.h
+measure.h
+/home/hezhiwei/CLionProjects/ParallelProject/measure.h
 mpi_group_by.h
 /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
-serial_funciton.h
-/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+
+/home/hezhiwei/CLionProjects/ParallelProject/measure.h
+string.h
+-
 
 /home/hezhiwei/CLionProjects/ParallelProject/mpi_group_by.h
 mpi.h
@@ -38,6 +44,20 @@ limits.h
 hashmap.h
 /home/hezhiwei/CLionProjects/ParallelProject/hashmap.h
 
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+string.h
+-
+serial_funciton.h
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
+stdio.h
+-
+omp.h
+-
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+stdint.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdint.h
+
 /home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
 string.h
 -
@@ -47,6 +67,18 @@ stdint.h
 -
 stdio.h
 -
+
+/home/hezhiwei/CLionProjects/ParallelProject/test.h
+stdlib.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdlib.h
+string.h
+/home/hezhiwei/CLionProjects/ParallelProject/string.h
+omp_group_by.h
+/home/hezhiwei/CLionProjects/ParallelProject/omp_group_by.h
+stdio.h
+/home/hezhiwei/CLionProjects/ParallelProject/stdio.h
+serial_funciton.h
+/home/hezhiwei/CLionProjects/ParallelProject/serial_funciton.h
 
 /usr/include/mpich/mpi.h
 stddef.h

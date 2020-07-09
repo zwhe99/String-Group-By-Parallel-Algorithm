@@ -4,54 +4,64 @@
 
 #include "mpi_group_by.h"
 #include "serial_funciton.h"
+#include "omp_group_by.h"
 
-void mpi_group_by(const char* filepath, size_t num_rows){
-    int comm_sz, my_rank, ierr, local_ok = 1;
+void mpi_group_by(const char *filepath, size_t num_rows, int ifOpenmp) {
+    int comm_sz, my_rank, ierr, i, local_ok = 1;
     const uint16_t l_let = ('A'<<8) | 'A';
     const uint16_t r_let = ('H'<<8) | 'H';
     uint16_t my_l_let, my_r_let, my_let_count;
-    size_t it, max_my_row, my_row, my_num_groups;
+    size_t it, max_my_row, my_row, my_num_groups = 0, global_num_groups=0;
     size_t* count_p = NULL;
+    size_t* num_groups_arr = NULL;
+    size_t* l_group_len = NULL;
+    size_t* g_group_len = NULL;
+    size_t* begin_pos = NULL;
+    size_t* end_pos = NULL;
     const char* key =NULL;
     char* buffer = NULL;
     char ** l_str_arr = NULL;
+    char ** l_group_key_discrete = NULL;
+    char ** l_group_key_contiguous = NULL;
+    char ** g_str_arr = NULL;
+    char ** g_group_key = NULL;
     MPI_File file;
     MPI_Offset file_size;
-    HASHMAP(char, size_t) map;
+    MPI_Status status;
 
     //INIT MPI
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
-    //calculate max # of lines that respondding to current process
-    max_my_row = (size_t)((num_rows / comm_sz) * 1.5);
 
-    //init hashmap
-    hashmap_init(&map, hashmap_hash_string, strcmp);
+    //init num_groups_arr
+    if(my_rank == 0){
+        num_groups_arr = calloc(comm_sz, sizeof(size_t));
+        if(!num_groups_arr){
+            local_ok = 0;
+        }
+    }
+    Check_for_error(local_ok, "cant allocate num_groups_arr");
+
+    //calculate max # of lines that will be distributed to current process
+    max_my_row = (size_t)((num_rows / comm_sz) * 1.5);
 
     //get the range of char distributed to current process
     mpi_get_let_range(comm_sz, my_rank, l_let, r_let, &my_l_let, &my_r_let, &my_let_count);
-
-    if (my_rank == 0) {
-        int a;
-        scanf("%d", &a);
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
-
 
     //allocate memory for l_str_arr
     l_str_arr = calloc(max_my_row , sizeof(char *));
     if(!l_str_arr)
         local_ok = 0;
-    Check_for_error(local_ok, "failed to calloc!");
+    Check_for_error(local_ok, "failed to calloc l_str_arr!");
 
     for(it = 0; it < max_my_row; ++it){
         l_str_arr[it] = calloc(MAX_STRING_LEN, sizeof(char ));
         if(!l_str_arr[it])
             local_ok = 0;
     }
-    Check_for_error(local_ok, "failed to calloc!");
+    Check_for_error(local_ok, "failed to calloc l_str_arr!");
 
     //open file
     ierr = MPI_File_open(MPI_COMM_WORLD, filepath, MPI_MODE_RDONLY, MPI_INFO_NULL, &file);
@@ -62,45 +72,139 @@ void mpi_group_by(const char* filepath, size_t num_rows){
 
     //read file to buffer
     mpi_read_file(filepath, &file, &buffer, &file_size);
+    MPI_File_close(&file);
 
     //distribute task
     mpi_distribute_task(file_size, buffer, l_str_arr, my_l_let, my_r_let, &my_row);
+    free(buffer);
 
-    for(it = 0; it<my_row; ++it){
-        count_p = hashmap_get(&map, l_str_arr[it]);
-        if (count_p) {
-            ++(*count_p);
+    char** l_str_arr_tmp = l_str_arr;
+    if(ifOpenmp){
+        //sort the l_str_arr according to the first super char
+        omp_first_char_count_string_sort(&l_str_arr, my_row, &begin_pos, &end_pos);
+
+        //sort the l_str_arr
+        omp_radix_sort_partial(l_str_arr, begin_pos, end_pos, 1);
+
+        //assign group
+        l_group_key_discrete = calloc(my_row, sizeof(char *));
+        l_group_len = calloc(my_row, sizeof(size_t));
+        omp_assign_group(l_str_arr, l_group_key_discrete, l_group_len, &my_num_groups, my_row, begin_pos, end_pos);
+
+        //copy the string to a contiguous memory
+        l_group_key_contiguous = alloc_2d_char(my_num_groups, MAX_STRING_LEN);
+        for(it = 0;it<my_num_groups;++it){
+            strcpy(l_group_key_contiguous[it], l_group_key_discrete[it]);
         }
-        else{
-            count_p = calloc(1, sizeof(size_t));
-            *count_p = 1;
-            int r = hashmap_put(&map, l_str_arr[it], count_p);
-            if (r != 0) {
-                local_ok = 0;
+        free(l_group_key_discrete);
+
+    }
+    else{
+        l_group_key_contiguous = alloc_2d_char(my_row, MAX_STRING_LEN);
+        l_group_len = calloc(my_row, sizeof(size_t));
+        radix_sort_main(l_str_arr, my_row, 0);
+
+        char* cur_key = l_str_arr[0];
+        size_t cur_group_num = 0;
+        for(it = 0; it < my_row; ++it){
+            if(strcmp(cur_key, l_str_arr[it]) == 0){
+                //same group
+                ++l_group_len[cur_group_num];
+            }
+            else
+            {
+                //other group
+                ++cur_group_num;
+                l_group_len[cur_group_num] = 1;
+                cur_key = l_str_arr[it];
+                strcpy(l_group_key_contiguous[cur_group_num], cur_key);
             }
         }
+        my_num_groups = cur_group_num +1;
     }
-    Check_for_error(local_ok, "failed to put in hashmap!");
+    for (it = 0; it < max_my_row; ++it) {
+        free(l_str_arr_tmp[it]);
+    }
+    free(l_str_arr_tmp);
 
-    my_num_groups = hashmap_size(&map);
-    printf("myid:%d\tnum_groups:%zu\n", my_rank, my_num_groups);
-    hashmap_foreach(key, count_p, &map) {
-        printf("%ld\t%s", *count_p, key);
+
+    //get num_groups from worker processes
+    MPI_Gather(&my_num_groups, 1, MPI_UNSIGNED_LONG, num_groups_arr, 1, MPI_UNSIGNED_LONG, 0, MPI_COMM_WORLD);
+
+    //calculate total # of groups
+    if(my_rank == 0){
+        for(i = 0; i < comm_sz; ++i){
+            global_num_groups += num_groups_arr[i];
+        }
     }
 
-    MPI_File_close(&file);
+    //allocate memory for global key and len
+    if(my_rank == 0){
+        g_group_key = alloc_2d_char(global_num_groups, MAX_STRING_LEN);
+        g_group_len = calloc(global_num_groups, sizeof(size_t));
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    //gather all keys and lens from worker processes
+    if(my_rank == 0){
+        int * recvcounts_key = calloc(comm_sz, sizeof(int));
+        int * recvcounts_len = calloc(comm_sz, sizeof(int));
+        int * displs_key = malloc(comm_sz * sizeof(int));
+        int * displs_len = malloc(comm_sz * sizeof(int));
+        for(i=0;i<comm_sz;++i){
+            recvcounts_key[i] = MAX_STRING_LEN * num_groups_arr[i];
+            recvcounts_len[i] = num_groups_arr[i];
+        }
+
+        memcpy(displs_key, recvcounts_key, comm_sz * sizeof(int ));
+        memcpy(displs_len, recvcounts_len, comm_sz * sizeof(int ));
+
+        size_t prefix_sum = 0;
+        for(i=0; i<comm_sz; ++i){
+            size_t tmp = displs_key[i];
+            displs_key[i] = prefix_sum;
+            prefix_sum += tmp;
+        }
+        prefix_sum = 0;
+        for(i=0; i<comm_sz; ++i){
+            size_t tmp = displs_len[i];
+            displs_len[i] = prefix_sum;
+            prefix_sum += tmp;
+        }
+        MPI_Gatherv(&(l_group_key_contiguous[0][0]), MAX_STRING_LEN*my_num_groups, MPI_CHAR, &(g_group_key[0][0]), recvcounts_key, displs_key, MPI_CHAR, 0, MPI_COMM_WORLD);
+        MPI_Gatherv(l_group_len, my_num_groups, MPI_UNSIGNED_LONG, g_group_len, recvcounts_len, displs_len, MPI_UNSIGNED_LONG, 0, MPI_COMM_WORLD);
+        free(recvcounts_key);
+        free(displs_key);
+        free(recvcounts_len);
+        free(displs_len);
+    }
+    else{
+        MPI_Gatherv(&(l_group_key_contiguous[0][0]), MAX_STRING_LEN*my_num_groups, MPI_CHAR, NULL, NULL, NULL, MPI_CHAR, 0, MPI_COMM_WORLD);
+        MPI_Gatherv(l_group_len, my_num_groups, MPI_UNSIGNED_LONG, NULL, NULL, NULL, MPI_UNSIGNED_LONG, 0, MPI_COMM_WORLD);
+
+    }
+    free(l_group_key_contiguous[0]);
+    free(l_group_key_contiguous);
+    free(l_group_len);
+
+
+    //print
+    if(my_rank == 0){
+        for(it = 0; it <global_num_groups;++it){
+            printf("%zu\t%s\n", g_group_len[it], g_group_key[it]);
+        }
+        printf("# of groups:%zu", global_num_groups);
+    }
+
+
 
     //free
-    hashmap_foreach_data(count_p, &map) {
-        free(count_p);
+    if(my_rank == 0){
+        free(num_groups_arr);
+        free(g_group_len);
+        free(g_group_key[0]);
+        free(g_group_key);
     }
-    hashmap_cleanup(&map);
-
-    for (it = 0; it < max_my_row; ++it) {
-        free(l_str_arr[it]);
-    }
-    free(l_str_arr);
-    free(buffer);
 
     // Finalize the MPI environment.
     MPI_Finalize();
@@ -173,8 +277,8 @@ void mpi_distribute_task(MPI_Offset size, const char* buffer, char** str_arr, ui
         else
         {
             str_arr[cur_row][cur_col++] = c;
-            if (c == '\n') {
-                str_arr[cur_row][cur_col] = '\0';
+            if (c == '\n' || c == '\r') {
+                str_arr[cur_row][cur_col-1] = '\0';
                 ++cur_row;
                 cur_col = 0;
                 new_line_flag = 1;

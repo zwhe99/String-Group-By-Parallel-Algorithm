@@ -85,5 +85,5 @@ void omp_assign_group(char** arr, char** group_keys, size_t* group_lens, size_t*
  * @param str_arr :[IN]array that to be grouped
  * @param num_rows :[IN]size of str_arr
  */
-void omp_group_by(char** str_arr, size_t num_rows);
+void omp_group_by(char **str_arr, size_t num_rows, char **group_keys, size_t *group_lens, size_t* num_groups_p);
 #endif //PARALLELPROJECT_OMP_GROUP_BY_H

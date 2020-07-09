@@ -9,9 +9,10 @@
 #include "stdlib.h"
 #include <stdint.h>
 #include <stdio.h>
+#define SIZE_OF_CNT 64
 #define SIZE_OF_CNT8 1<<8
 #define SIZE_OF_CNT16 1<<16
-#define RADIX_MIN_NUM 30
+#define RADIX_MIN_NUM 100
 
 /**
  * @name swapStringPointer
@@ -125,5 +126,8 @@ void radix_sort8(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* l
  */
 void radix_sort16(char** arr, char** src, char** dest, uint8_t* leb8, uint16_t* leb16, size_t beg, size_t end, int level);
 
+char **alloc_2d_char(size_t rows, size_t cols);
 unsigned int next_power_2(unsigned int n);
+
+int uint16_map_to_idx(uint16_t ch);
 #endif //PARALLELPROJECT_SERIAL_FUNCITON_H
